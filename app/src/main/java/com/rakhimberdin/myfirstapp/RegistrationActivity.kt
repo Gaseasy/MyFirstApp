@@ -43,17 +43,25 @@ class RegistrationActivity : AppCompatActivity() {
             val etPasswordText = etPassword.text.toString();
             val etRepeatPasswordText = etRepeatPassword.text.toString();
 
-            if (emailInputFlag && !etEmailText.contains('@'))
+            if (emailInputFlag && !etEmailText.contains('@')) {
                 Toast.makeText(this, "Email должен содержать символ @", Toast.LENGTH_LONG).show();
+                return@setOnClickListener;
+            }
 
-            if (!emailInputFlag && !etEmailText.contains('+'))
+            if (!emailInputFlag && !etEmailText.contains('+')) {
                 Toast.makeText(this, "Телефон должен содержать символ +", Toast.LENGTH_LONG).show();
+                return@setOnClickListener;
+            }
 
-            if (etPasswordText.length < 8)
+            if (etPasswordText.length < 8) {
                 Toast.makeText(this, "Пароль должен быть минимум 8 символов", Toast.LENGTH_LONG).show();
+                return@setOnClickListener;
+            }
 
-            if (etPasswordText != etRepeatPasswordText)
+            if (etPasswordText != etRepeatPasswordText) {
                 Toast.makeText(this, "Пароли должны совпадать", Toast.LENGTH_LONG).show();
+                return@setOnClickListener;
+            }
         }
     }
 }
