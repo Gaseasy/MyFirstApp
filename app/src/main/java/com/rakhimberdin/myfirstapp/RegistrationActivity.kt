@@ -1,5 +1,7 @@
 package com.rakhimberdin.myfirstapp
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputType
@@ -62,6 +64,21 @@ class RegistrationActivity : AppCompatActivity() {
                 Toast.makeText(this, "Пароли должны совпадать", Toast.LENGTH_LONG).show();
                 return@setOnClickListener;
             }
+
+            putSettings(etEmailText, etPasswordText, emailInputFlag);
+            val intent = Intent(this, ContentActivity::class.java);
+            startActivity(intent);
         }
+
+
+    }
+
+    private fun putSettings(email: String, password: String, emailInputFlag: Boolean) {
+        val storage = getSharedPreferences("settings", Context.MODE_PRIVATE);
+        storage.edit().putString("password", password).apply();
+        if (emailInputFlag)
+            storage.edit().putString("email", email).apply();
+        else
+            storage.edit().putString("phone", email).apply();
     }
 }
