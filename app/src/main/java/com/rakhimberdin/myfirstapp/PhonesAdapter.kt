@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.recyclerview_item.view.*
 
 class PhonesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -36,16 +37,11 @@ class PhonesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 class PhonesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-    private val itemName: TextView = itemView.findViewById(R.id.item_name)
-    private val itemPrice: TextView = itemView.findViewById(R.id.item_price)
-    private val itemDate: TextView = itemView.findViewById(R.id.item_date)
-    private val itemScore: TextView = itemView.findViewById(R.id.item_score)
-
     fun bind(mPhones: PhoneModel) {
-        itemName.text = mPhones.name
-        itemPrice.text = mPhones.price
-        itemDate.text = mPhones.data
-        itemScore.text = mPhones.score
+        itemView.item_name.text = mPhones.name
+        itemView.item_price.text = mPhones.price
+        itemView.item_date.text = mPhones.data
+        itemView.item_score.text = mPhones.score
     }
 
 }

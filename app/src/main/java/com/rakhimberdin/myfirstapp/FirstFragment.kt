@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_first.view.*
 
 class FirstFragment : Fragment() {
 
@@ -17,9 +18,8 @@ class FirstFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_first, container, false)
 
         loadData()
-        val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = myAdapter
+        root.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        root.recyclerView.adapter = myAdapter
 
         return root
     }
